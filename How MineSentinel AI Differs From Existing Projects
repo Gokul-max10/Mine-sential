@@ -1,0 +1,45 @@
+How MineSentinel AI Differs from Existing Projects
+
+Existing underground mine robotic systems have already demonstrated several technologies such as gas monitoring, fire detection, video surveillance, LiDAR-based mapping, SLAM, autonomous navigation, and robotic inspection. Therefore, MineSentinel AI does not claim that these individual technologies are completely new.
+
+The main difference of MineSentinel AI is its system-level integration. Instead of focusing on only one function, the proposed system combines underground mapping, environmental monitoring, obstacle detection, passability analysis, possible worker detection, emergency beacon communication, sensor fusion, risk assessment, and dynamic rescue mapping within a single rescue-support platform.
+
+Many existing basic systems mainly collect sensor data and generate individual alerts. MineSentinel AI aims to combine information from multiple sensors and provide context-aware situational information to rescue operators.
+
+For example, if the system detects elevated gas levels, high temperature, a possible worker signal, and a blocked route in the same area, these observations can be combined to identify the location as a high-priority area for investigation.
+
+Another important feature is passability analysis. Instead of simply identifying an obstacle, MineSentinel AI attempts to estimate the size of the obstruction, available openings, and robot clearance to classify a route as potentially Passable, Uncertain, or Blocked.
+
+The system also supports multi-modal possible worker detection using camera-based AI, optional thermal sensing, worker emergency beacons, and acoustic or vibration signals. These sources are treated as complementary evidence rather than assuming that a single detection confirms a trapped worker.
+
+The collected information is integrated into a dynamic digital rescue map containing the explored environment, robot location, hazards, possible worker locations, obstacles, communication status, and risk levels.
+
+MineSentinel AI is designed as a human-in-the-loop rescue-support system. The robot and AI provide information, analysis, and priority recommendations, while trained rescue personnel retain responsibility for the final decision-making process.
+
+The project is therefore different not because it invents a new LiDAR, sensor, AI model, or robot, but because it proposes a unified architecture that transforms multiple robotic observations into actionable rescue intelligence.
+
+Key Difference
+
+Existing approach:
+Sensor Monitoring → Individual Alerts
+
+MineSentinel AI:
+Explore → Map → Monitor → Detect → Localize → Sensor Fusion → Risk Assessment → Dynamic Rescue Map → Human Rescue Decision
+
+Proposed Contribution
+
+The primary contribution of MineSentinel AI is the integration of:
+
+- Autonomous or assisted underground mapping
+- Environmental hazard monitoring
+- Obstacle and passability analysis
+- Multi-modal possible worker detection
+- Worker emergency beacon support
+- Sensor fusion
+- Risk and priority assessment
+- Dynamic rescue mapping
+- Communication monitoring
+- Human-in-the-loop rescue decision support
+- Future multi-robot cooperation
+
+This approach aims to provide rescue teams with a more complete understanding of hazardous underground environments before human personnel enter them.

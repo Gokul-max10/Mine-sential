@@ -1,0 +1,87 @@
+SOS Worker Emergency Beacon
+
+The MineSentinel AI system includes an optional wireless emergency beacon that can be carried by underground mine workers. The purpose of this beacon is to provide an additional communication channel between workers and the robotic rescue-support system during emergency situations.
+
+Working Principle
+
+Each worker beacon is built using an ESP32 microcontroller, LoRa communication module, SOS push button, buzzer/LED indicator, accelerometer, and battery.
+
+During normal operation, the beacon periodically transmits a heartbeat/status message containing a unique Worker ID. This allows the system to know that the beacon is active.
+
+When a worker encounters an emergency, they can press the SOS button on the beacon. The ESP32 detects the button press and generates an emergency message containing the Worker ID, SOS status, and timestamp.
+
+The emergency message is transmitted using LoRa. Depending on the communication architecture, the message can be received directly by the rescue base station or forwarded through a MineSentinel robot acting as a communication relay.
+
+The received SOS information is processed by the Raspberry Pi or PC and displayed on the rescue dashboard. The corresponding worker is marked as a high-priority emergency location on the dynamic rescue map.
+
+SOS Data Flow
+
+Worker
+→ SOS Button
+→ ESP32 Worker Beacon
+→ LoRa Communication
+→ MineSentinel Robot / Relay
+→ Raspberry Pi or PC
+→ SOS Processing
+→ Dynamic Rescue Map
+→ Rescue Dashboard
+→ Human Rescue Operator
+
+Information Provided by the SOS System
+
+The system can provide:
+
+- Unique Worker ID
+- SOS status
+- Timestamp of emergency transmission
+- Received Signal Strength Indicator (RSSI), when supported
+- Robot/relay location that received the signal
+- Last-known or estimated worker location
+- Communication status
+- Beacon battery/status information, if implemented
+
+Location Estimation
+
+GPS cannot normally be relied upon underground. Therefore, the system does not assume that the worker's exact geographic coordinates are available.
+
+Instead, the system can associate the SOS signal with the location of the MineSentinel robot or communication relay that received the signal. RSSI and multiple relay observations can optionally be used to estimate the worker's approximate location.
+
+If communication is lost, the system retains the worker's last-known location and clearly indicates that the current location is unknown.
+
+Emergency Indication
+
+When an SOS message is received, the dashboard can generate an emergency alert such as:
+
+**SOS RECEIVED — WORKER ID: W001**
+
+The corresponding area on the rescue map can be assigned a high-priority status so that the rescue team can investigate the location.
+
+Important Safety Consideration
+
+The SOS signal should not be interpreted as proof that the worker has been located or rescued.
+
+The system reports:
+
+**"Worker SOS received / possible emergency location"**
+
+rather than:
+
+**"Worker confirmed at this location."**
+
+Underground communication can be affected by tunnel geometry, rock, distance, interference, damaged infrastructure, and robot position. Therefore, the system must always display communication quality and last-known information when current communication is unavailable.
+
+Future Improvements
+
+The SOS subsystem can later be extended with:
+
+- Multiple LoRa relay robots
+- Mesh communication
+- RSSI-based localization
+- Time-of-arrival or time-difference localization
+- Automatic beacon health monitoring
+- Accelerometer-based fall/impact detection
+- Two-way communication
+- Shared worker locations between multiple robots
+- Integration with the AI-based risk assessment system
+
+The SOS subsystem is therefore designed as a **worker emergency communication and localization-support mechanism**, while final rescue decisions remain under the control of trained human rescue personnel.

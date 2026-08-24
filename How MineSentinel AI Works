@@ -1,0 +1,35 @@
+How MineSentinel AI Works
+
+MineSentinel AI is an AI-powered robotic first-response and rescue-support system designed to improve safety and situational awareness during underground mine emergencies. The system is designed to enter hazardous or damaged areas before human rescue teams, collect critical information, and provide it to trained rescue personnel for safer decision-making.
+
+The robot begins by exploring the underground environment using LiDAR, IMU, wheel encoders, cameras, and environmental sensors. LiDAR continuously measures the distance between the robot and surrounding surfaces, helping the system understand the tunnel structure and obstacles. The IMU measures the robot’s motion and orientation, while wheel encoders provide information about wheel movement and travelled distance.
+
+An ESP32 acts as the low-level controller of the robot. It is responsible for motor control, reading basic sensors, monitoring battery status, and handling communication with other devices. Heavy computational tasks are not placed on the ESP32. Instead, sensor data is transferred to a Raspberry Pi or PC, which acts as the main processing unit.
+
+The Raspberry Pi or PC runs the major software components such as ROS 2, SLAM, computer vision, AI models, sensor fusion, mapping, and risk assessment. SLAM, or Simultaneous Localization and Mapping, allows the robot to estimate its position while simultaneously creating a map of the unknown underground environment. As the robot moves through tunnels, the map is continuously updated with explored regions, tunnel structures, junctions, obstacles, and other environmental information.
+
+When the robot encounters rocks, rubble, or other obstacles, the system performs obstacle and passability analysis. It can estimate the dimensions of an obstruction or opening and compare the available space with the robot’s dimensions. Based on the available sensor information, the route can be classified as potentially passable, uncertain, or blocked. For complex rubble, additional camera or depth information can improve the analysis.
+
+The robot continuously monitors the underground environment using gas, temperature, and humidity sensors. These sensors provide information about potentially dangerous conditions. Abnormal gas concentrations or high temperatures can be associated with specific locations on the digital rescue map. The system can therefore help rescue teams identify areas that may require additional attention.
+
+MineSentinel AI also supports an optional worker emergency beacon. A worker can carry a small beacon containing an ESP32, LoRa communication module, SOS button, and battery. During an emergency, the worker can activate the SOS button, allowing the system to receive the worker ID, signal information, and timestamp. The system can then display the estimated or last-known location on the rescue map. Since underground wireless communication can be affected by rock structures, distance, and interference, the system does not assume that the received signal always provides an exact location.
+
+For possible human detection, MineSentinel AI uses multiple sensing methods. A camera can use computer vision to identify possible human shapes, while a thermal camera can help identify human-like heat patterns in darkness or low-visibility conditions. Acoustic or vibration sensors can also identify unusual patterns that may indicate possible human activity. These methods are treated as supporting evidence rather than definitive confirmation.
+
+The different sensor outputs are combined using sensor fusion. Instead of depending on a single sensor, the system considers multiple observations together. For example, a worker emergency signal, possible camera detection, unusual vibration, and environmental information can collectively increase the priority of a particular area.
+
+The AI-based risk assessment system analyzes the available information and assigns priority levels to different areas. A location with normal environmental conditions may have a low priority, while an area containing a possible worker signal, hazardous gas, high temperature, and a blocked route may receive a high or critical priority classification. These classifications are intended to support rescue decisions and are not a replacement for professional judgment.
+
+All processed information is combined into a dynamic digital rescue map. The map can contain underground tunnel geometry, explored and unexplored areas, robot position, obstacles, rubble, hazards, possible worker locations, emergency beacon signals, communication quality, and risk levels. As the robot continues exploring, the map is continuously updated.
+
+A rescue dashboard provides the human operator with a centralized view of the robot and underground environment. The dashboard can display the live map, robot location, camera feed, LiDAR information, gas readings, temperature, battery level, communication status, possible person detections, hazards, and risk priorities. This allows the rescue team to understand the situation without immediately entering unknown hazardous areas.
+
+The system is designed with a human-in-the-loop approach. MineSentinel AI provides observations, analysis, alerts, and recommendations, while trained rescue personnel remain responsible for interpreting the information and making final decisions. The system therefore acts as a robotic first-response and situational-awareness platform rather than an autonomous replacement for human rescuers.
+
+In the future, the system can be expanded from a single robot to multiple cooperating robots. Different robots could perform different tasks such as mapping, environmental monitoring, worker detection, or communication relay. The robots could share maps, hazard information, worker signals, and exploration status to improve coverage and reduce exploration time.
+
+Overall, MineSentinel AI follows the workflow:
+
+Explore → Map → Monitor → Detect → Localize → Analyze → Communicate → Assess Risk → Prioritize → Support Human Rescue Decisions
+
+The primary objective is to provide rescue teams with reliable, real-time information about hazardous underground environments so that they can better understand the situation and plan safer rescue operations.

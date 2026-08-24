@@ -1,0 +1,65 @@
+Hardware Components:
+Controller & Processing
+ESP32 Dev Board
+Raspberry Pi 4 (4GB/8GB)
+Locomotion
+4WD/6WD Robot Chassis (~30–40 cm)
+DC Gear Motors (12V, ~200 RPM)
+Motor Driver (TB6612FNG or L298N)
+Navigation & Mapping
+RPLidar A1/A2 (2D LiDAR)
+IMU (MPU6050 or BNO055)
+Wheel Encoders (2 units minimum)
+
+Vision:
+USB Camera (Logitech C270 or Pi Camera v2)
+Environmental Sensors
+MQ-7 (Carbon Monoxide)
+MQ-4 (Methane)
+DHT22 (Temperature + Humidity)
+Grove O₂ Sensor (Oxygen)
+
+Communication:
+LoRa SX1278 Module
+Wi-Fi (ESP32 built-in, for prototype testing)
+
+Power:
+12V Li-ion Battery Pack (5000–8000 mAh)
+DC-DC Buck Converter
+
+Safety:
+Emergency Stop Switch
+Fuse/Overcurrent Protection
+
+Worker Emergency Beacon (Demo Unit):
+ESP32 Dev Board
+LoRa SX1278 Module
+Push Button (SOS)
+LED + Buzzer
+Li-ion Battery (3.7V, 2000 mAh)
+Accelerometer (MPU6050)
+
+***GOOD TO HAVE (Enhances Demo)
+Depth Camera (Intel RealSense D435)
+Thermal Camera (FLIR Lepton)OLED Display (debugging)
+Extra LoRa nodes (mesh relay simulation)***
+
+ADVANCED / FUTURE:
+Second Robot (swarm demo)
+3D LiDAR (Velodyne Puck Lite)
+Geophone / Piezo Vibration Sensor
+Intrinsically Safe Certified Sensors
+
+COMPONENTS               COST
+ESP32	                   600
+Raspberry Pi 4	         5,500
+RPLidar A1	             12,000
+IMU (MPU6050)	           300
+Encoders	               500
+Camera	                 1,200
+Gas Sensors (set)	       2,500
+LoRa Modules (2 units)	 1,200
+4WD Chassis + Motors	   3,500
+Motor Driver	           400
+Battery Pack + Converter	2,000
+Beacon Components	1,500
